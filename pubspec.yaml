@@ -7,8 +7,16 @@ environment:
   sdk: ^3.5.3
 
 dependencies:
+  dartz: ^0.10.1
+  equatable: ^2.0.5
   flutter:
     sdk: flutter
+  flutter_bloc: ^8.1.6
+  flutter_screenutil: ^5.9.3
+  get_it: ^8.0.0
+  hive: ^2.2.3
+  internet_connection_checker: ^1.0.0+1
+  path_provider: ^2.1.4
 
 dev_dependencies:
   flutter_test:
