@@ -5,17 +5,24 @@ import 'package:todo_task/shared/shared.dart';
 class PrimaryButton extends StatelessWidget {
   final String title;
   final VoidCallback? onTap;
+  final double? height;
 
-  const PrimaryButton({super.key, required this.title, this.onTap});
+  const PrimaryButton({
+    super.key,
+    required this.title,
+    this.onTap,
+    this.height,
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+        height: height,
         width: double.infinity,
         decoration: BoxDecoration(
-          color: AppColors.primary,
+          color: onTap == null ? AppColors.greyBackground : AppColors.primary,
           borderRadius: BorderRadius.circular(16),
         ),
         padding: EdgeInsets.symmetric(vertical: 12.h),
