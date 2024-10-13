@@ -43,7 +43,7 @@ class TaskListPage extends StatelessWidget {
                           bottom: 72.h,
                         ),
                         itemBuilder: (context, index) {
-                          return TaskCard(task: results[index], index: index);
+                          return TaskCard(task: results[index]);
                         },
                         separatorBuilder: (context, index) {
                           return AppSpacing.v16();

@@ -8,7 +8,7 @@ import 'package:todo_task/module/task/task.dart';
 import 'package:todo_task/shared/shared.dart';
 
 class TaskDetailPage extends StatefulWidget {
-  final (int, TaskModel) task;
+  final TaskModel task;
   const TaskDetailPage({super.key, required this.task});
 
   @override
@@ -19,10 +19,10 @@ class _TaskDetailPageState extends State<TaskDetailPage> {
   @override
   void initState() {
     super.initState();
-    titleController.text = widget.task.$2.title;
-    descriptionController.text = widget.task.$2.description;
-    status = widget.task.$2.status;
-    date = widget.task.$2.createdAt;
+    titleController.text = widget.task.title;
+    descriptionController.text = widget.task.description;
+    status = widget.task.status;
+    date = widget.task.createdAt;
     if (status == TaskStatus.belumSelesai) {
       selectedIndex = 0;
     } else {
@@ -119,12 +119,12 @@ class _TaskDetailPageState extends State<TaskDetailPage> {
           onTap: () {
             context.read<TaskBloc>().add(
                   TaskEvent.editTask(
-                    widget.task.$1,
                     TaskModel(
                       title: titleController.text,
                       description: descriptionController.text,
                       status: Constant.listStatus[selectedIndex],
-                      createdAt: DateTime.now(),
+                      createdAt: widget.task.createdAt,
+                      id: widget.task.id,
                     ),
                   ),
                 );

@@ -21,8 +21,8 @@ mixin _$TaskEvent {
     required TResult Function() started,
     required TResult Function() getTasks,
     required TResult Function(TaskModel task) addTask,
-    required TResult Function(int index, TaskModel task) editTask,
-    required TResult Function(int index) deleteTask,
+    required TResult Function(TaskModel task) editTask,
+    required TResult Function(String id) deleteTask,
     required TResult Function(TaskStatus status) filterTask,
   }) =>
       throw _privateConstructorUsedError;
@@ -31,8 +31,8 @@ mixin _$TaskEvent {
     TResult? Function()? started,
     TResult? Function()? getTasks,
     TResult? Function(TaskModel task)? addTask,
-    TResult? Function(int index, TaskModel task)? editTask,
-    TResult? Function(int index)? deleteTask,
+    TResult? Function(TaskModel task)? editTask,
+    TResult? Function(String id)? deleteTask,
     TResult? Function(TaskStatus status)? filterTask,
   }) =>
       throw _privateConstructorUsedError;
@@ -41,8 +41,8 @@ mixin _$TaskEvent {
     TResult Function()? started,
     TResult Function()? getTasks,
     TResult Function(TaskModel task)? addTask,
-    TResult Function(int index, TaskModel task)? editTask,
-    TResult Function(int index)? deleteTask,
+    TResult Function(TaskModel task)? editTask,
+    TResult Function(String id)? deleteTask,
     TResult Function(TaskStatus status)? filterTask,
     required TResult orElse(),
   }) =>
@@ -144,8 +144,8 @@ class _$StartedImpl implements _Started {
     required TResult Function() started,
     required TResult Function() getTasks,
     required TResult Function(TaskModel task) addTask,
-    required TResult Function(int index, TaskModel task) editTask,
-    required TResult Function(int index) deleteTask,
+    required TResult Function(TaskModel task) editTask,
+    required TResult Function(String id) deleteTask,
     required TResult Function(TaskStatus status) filterTask,
   }) {
     return started();
@@ -157,8 +157,8 @@ class _$StartedImpl implements _Started {
     TResult? Function()? started,
     TResult? Function()? getTasks,
     TResult? Function(TaskModel task)? addTask,
-    TResult? Function(int index, TaskModel task)? editTask,
-    TResult? Function(int index)? deleteTask,
+    TResult? Function(TaskModel task)? editTask,
+    TResult? Function(String id)? deleteTask,
     TResult? Function(TaskStatus status)? filterTask,
   }) {
     return started?.call();
@@ -170,8 +170,8 @@ class _$StartedImpl implements _Started {
     TResult Function()? started,
     TResult Function()? getTasks,
     TResult Function(TaskModel task)? addTask,
-    TResult Function(int index, TaskModel task)? editTask,
-    TResult Function(int index)? deleteTask,
+    TResult Function(TaskModel task)? editTask,
+    TResult Function(String id)? deleteTask,
     TResult Function(TaskStatus status)? filterTask,
     required TResult orElse(),
   }) {
@@ -273,8 +273,8 @@ class _$GetTasksImpl implements _GetTasks {
     required TResult Function() started,
     required TResult Function() getTasks,
     required TResult Function(TaskModel task) addTask,
-    required TResult Function(int index, TaskModel task) editTask,
-    required TResult Function(int index) deleteTask,
+    required TResult Function(TaskModel task) editTask,
+    required TResult Function(String id) deleteTask,
     required TResult Function(TaskStatus status) filterTask,
   }) {
     return getTasks();
@@ -286,8 +286,8 @@ class _$GetTasksImpl implements _GetTasks {
     TResult? Function()? started,
     TResult? Function()? getTasks,
     TResult? Function(TaskModel task)? addTask,
-    TResult? Function(int index, TaskModel task)? editTask,
-    TResult? Function(int index)? deleteTask,
+    TResult? Function(TaskModel task)? editTask,
+    TResult? Function(String id)? deleteTask,
     TResult? Function(TaskStatus status)? filterTask,
   }) {
     return getTasks?.call();
@@ -299,8 +299,8 @@ class _$GetTasksImpl implements _GetTasks {
     TResult Function()? started,
     TResult Function()? getTasks,
     TResult Function(TaskModel task)? addTask,
-    TResult Function(int index, TaskModel task)? editTask,
-    TResult Function(int index)? deleteTask,
+    TResult Function(TaskModel task)? editTask,
+    TResult Function(String id)? deleteTask,
     TResult Function(TaskStatus status)? filterTask,
     required TResult orElse(),
   }) {
@@ -429,8 +429,8 @@ class _$AddTaskImpl implements _AddTask {
     required TResult Function() started,
     required TResult Function() getTasks,
     required TResult Function(TaskModel task) addTask,
-    required TResult Function(int index, TaskModel task) editTask,
-    required TResult Function(int index) deleteTask,
+    required TResult Function(TaskModel task) editTask,
+    required TResult Function(String id) deleteTask,
     required TResult Function(TaskStatus status) filterTask,
   }) {
     return addTask(task);
@@ -442,8 +442,8 @@ class _$AddTaskImpl implements _AddTask {
     TResult? Function()? started,
     TResult? Function()? getTasks,
     TResult? Function(TaskModel task)? addTask,
-    TResult? Function(int index, TaskModel task)? editTask,
-    TResult? Function(int index)? deleteTask,
+    TResult? Function(TaskModel task)? editTask,
+    TResult? Function(String id)? deleteTask,
     TResult? Function(TaskStatus status)? filterTask,
   }) {
     return addTask?.call(task);
@@ -455,8 +455,8 @@ class _$AddTaskImpl implements _AddTask {
     TResult Function()? started,
     TResult Function()? getTasks,
     TResult Function(TaskModel task)? addTask,
-    TResult Function(int index, TaskModel task)? editTask,
-    TResult Function(int index)? deleteTask,
+    TResult Function(TaskModel task)? editTask,
+    TResult Function(String id)? deleteTask,
     TResult Function(TaskStatus status)? filterTask,
     required TResult orElse(),
   }) {
@@ -528,7 +528,7 @@ abstract class _$$EditTaskImplCopyWith<$Res> {
           _$EditTaskImpl value, $Res Function(_$EditTaskImpl) then) =
       __$$EditTaskImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int index, TaskModel task});
+  $Res call({TaskModel task});
 }
 
 /// @nodoc
@@ -544,14 +544,9 @@ class __$$EditTaskImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? index = null,
     Object? task = null,
   }) {
     return _then(_$EditTaskImpl(
-      null == index
-          ? _value.index
-          : index // ignore: cast_nullable_to_non_nullable
-              as int,
       null == task
           ? _value.task
           : task // ignore: cast_nullable_to_non_nullable
@@ -563,16 +558,14 @@ class __$$EditTaskImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EditTaskImpl implements _EditTask {
-  const _$EditTaskImpl(this.index, this.task);
+  const _$EditTaskImpl(this.task);
 
-  @override
-  final int index;
   @override
   final TaskModel task;
 
   @override
   String toString() {
-    return 'TaskEvent.editTask(index: $index, task: $task)';
+    return 'TaskEvent.editTask(task: $task)';
   }
 
   @override
@@ -580,12 +573,11 @@ class _$EditTaskImpl implements _EditTask {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EditTaskImpl &&
-            (identical(other.index, index) || other.index == index) &&
             (identical(other.task, task) || other.task == task));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, index, task);
+  int get hashCode => Object.hash(runtimeType, task);
 
   /// Create a copy of TaskEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -601,11 +593,11 @@ class _$EditTaskImpl implements _EditTask {
     required TResult Function() started,
     required TResult Function() getTasks,
     required TResult Function(TaskModel task) addTask,
-    required TResult Function(int index, TaskModel task) editTask,
-    required TResult Function(int index) deleteTask,
+    required TResult Function(TaskModel task) editTask,
+    required TResult Function(String id) deleteTask,
     required TResult Function(TaskStatus status) filterTask,
   }) {
-    return editTask(index, task);
+    return editTask(task);
   }
 
   @override
@@ -614,11 +606,11 @@ class _$EditTaskImpl implements _EditTask {
     TResult? Function()? started,
     TResult? Function()? getTasks,
     TResult? Function(TaskModel task)? addTask,
-    TResult? Function(int index, TaskModel task)? editTask,
-    TResult? Function(int index)? deleteTask,
+    TResult? Function(TaskModel task)? editTask,
+    TResult? Function(String id)? deleteTask,
     TResult? Function(TaskStatus status)? filterTask,
   }) {
-    return editTask?.call(index, task);
+    return editTask?.call(task);
   }
 
   @override
@@ -627,13 +619,13 @@ class _$EditTaskImpl implements _EditTask {
     TResult Function()? started,
     TResult Function()? getTasks,
     TResult Function(TaskModel task)? addTask,
-    TResult Function(int index, TaskModel task)? editTask,
-    TResult Function(int index)? deleteTask,
+    TResult Function(TaskModel task)? editTask,
+    TResult Function(String id)? deleteTask,
     TResult Function(TaskStatus status)? filterTask,
     required TResult orElse(),
   }) {
     if (editTask != null) {
-      return editTask(index, task);
+      return editTask(task);
     }
     return orElse();
   }
@@ -683,10 +675,8 @@ class _$EditTaskImpl implements _EditTask {
 }
 
 abstract class _EditTask implements TaskEvent {
-  const factory _EditTask(final int index, final TaskModel task) =
-      _$EditTaskImpl;
+  const factory _EditTask(final TaskModel task) = _$EditTaskImpl;
 
-  int get index;
   TaskModel get task;
 
   /// Create a copy of TaskEvent
@@ -702,7 +692,7 @@ abstract class _$$DeleteTaskImplCopyWith<$Res> {
           _$DeleteTaskImpl value, $Res Function(_$DeleteTaskImpl) then) =
       __$$DeleteTaskImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int index});
+  $Res call({String id});
 }
 
 /// @nodoc
@@ -718,13 +708,13 @@ class __$$DeleteTaskImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? index = null,
+    Object? id = null,
   }) {
     return _then(_$DeleteTaskImpl(
-      null == index
-          ? _value.index
-          : index // ignore: cast_nullable_to_non_nullable
-              as int,
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -732,14 +722,14 @@ class __$$DeleteTaskImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$DeleteTaskImpl implements _DeleteTask {
-  const _$DeleteTaskImpl(this.index);
+  const _$DeleteTaskImpl(this.id);
 
   @override
-  final int index;
+  final String id;
 
   @override
   String toString() {
-    return 'TaskEvent.deleteTask(index: $index)';
+    return 'TaskEvent.deleteTask(id: $id)';
   }
 
   @override
@@ -747,11 +737,11 @@ class _$DeleteTaskImpl implements _DeleteTask {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeleteTaskImpl &&
-            (identical(other.index, index) || other.index == index));
+            (identical(other.id, id) || other.id == id));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, index);
+  int get hashCode => Object.hash(runtimeType, id);
 
   /// Create a copy of TaskEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -767,11 +757,11 @@ class _$DeleteTaskImpl implements _DeleteTask {
     required TResult Function() started,
     required TResult Function() getTasks,
     required TResult Function(TaskModel task) addTask,
-    required TResult Function(int index, TaskModel task) editTask,
-    required TResult Function(int index) deleteTask,
+    required TResult Function(TaskModel task) editTask,
+    required TResult Function(String id) deleteTask,
     required TResult Function(TaskStatus status) filterTask,
   }) {
-    return deleteTask(index);
+    return deleteTask(id);
   }
 
   @override
@@ -780,11 +770,11 @@ class _$DeleteTaskImpl implements _DeleteTask {
     TResult? Function()? started,
     TResult? Function()? getTasks,
     TResult? Function(TaskModel task)? addTask,
-    TResult? Function(int index, TaskModel task)? editTask,
-    TResult? Function(int index)? deleteTask,
+    TResult? Function(TaskModel task)? editTask,
+    TResult? Function(String id)? deleteTask,
     TResult? Function(TaskStatus status)? filterTask,
   }) {
-    return deleteTask?.call(index);
+    return deleteTask?.call(id);
   }
 
   @override
@@ -793,13 +783,13 @@ class _$DeleteTaskImpl implements _DeleteTask {
     TResult Function()? started,
     TResult Function()? getTasks,
     TResult Function(TaskModel task)? addTask,
-    TResult Function(int index, TaskModel task)? editTask,
-    TResult Function(int index)? deleteTask,
+    TResult Function(TaskModel task)? editTask,
+    TResult Function(String id)? deleteTask,
     TResult Function(TaskStatus status)? filterTask,
     required TResult orElse(),
   }) {
     if (deleteTask != null) {
-      return deleteTask(index);
+      return deleteTask(id);
     }
     return orElse();
   }
@@ -849,9 +839,9 @@ class _$DeleteTaskImpl implements _DeleteTask {
 }
 
 abstract class _DeleteTask implements TaskEvent {
-  const factory _DeleteTask(final int index) = _$DeleteTaskImpl;
+  const factory _DeleteTask(final String id) = _$DeleteTaskImpl;
 
-  int get index;
+  String get id;
 
   /// Create a copy of TaskEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -931,8 +921,8 @@ class _$FilterTaskImpl implements _FilterTask {
     required TResult Function() started,
     required TResult Function() getTasks,
     required TResult Function(TaskModel task) addTask,
-    required TResult Function(int index, TaskModel task) editTask,
-    required TResult Function(int index) deleteTask,
+    required TResult Function(TaskModel task) editTask,
+    required TResult Function(String id) deleteTask,
     required TResult Function(TaskStatus status) filterTask,
   }) {
     return filterTask(status);
@@ -944,8 +934,8 @@ class _$FilterTaskImpl implements _FilterTask {
     TResult? Function()? started,
     TResult? Function()? getTasks,
     TResult? Function(TaskModel task)? addTask,
-    TResult? Function(int index, TaskModel task)? editTask,
-    TResult? Function(int index)? deleteTask,
+    TResult? Function(TaskModel task)? editTask,
+    TResult? Function(String id)? deleteTask,
     TResult? Function(TaskStatus status)? filterTask,
   }) {
     return filterTask?.call(status);
@@ -957,8 +947,8 @@ class _$FilterTaskImpl implements _FilterTask {
     TResult Function()? started,
     TResult Function()? getTasks,
     TResult Function(TaskModel task)? addTask,
-    TResult Function(int index, TaskModel task)? editTask,
-    TResult Function(int index)? deleteTask,
+    TResult Function(TaskModel task)? editTask,
+    TResult Function(String id)? deleteTask,
     TResult Function(TaskStatus status)? filterTask,
     required TResult orElse(),
   }) {

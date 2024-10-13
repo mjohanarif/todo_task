@@ -18,7 +18,7 @@ class AppRoutes {
         );
       case taskDetailPage:
         return _materialRoute(
-          TaskDetailPage(task: settings.arguments as (int, TaskModel)),
+          TaskDetailPage(task: settings.arguments as TaskModel),
         );
 
       default:

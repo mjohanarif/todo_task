@@ -29,14 +29,14 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
       );
     });
     on<_EditTask>((event, emit) async {
-      final result = await editTaskUsecase((event.index, event.task));
+      final result = await editTaskUsecase(event.task);
       result.fold(
         (l) => emit(_Error(l.message)),
         (r) => emit(_Loaded(r)),
       );
     });
     on<_DeleteTask>((event, emit) async {
-      final result = await deleteTaskUsecase(event.index);
+      final result = await deleteTaskUsecase(event.id);
       result.fold(
         (l) => emit(_Error(l.message)),
         (r) => emit(_Loaded(r)),

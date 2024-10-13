@@ -5,8 +5,8 @@ import 'package:todo_task/shared/shared.dart';
 abstract class TaskLocalDataSource {
   Future<List<TaskModel>?> getTasks();
   Future<List<TaskModel>> addTask(TaskModel task);
-  Future<List<TaskModel>> editTask(int index, TaskModel task);
-  Future<List<TaskModel>> deleteTask(int index);
+  Future<List<TaskModel>> editTask(TaskModel task);
+  Future<List<TaskModel>> deleteTask(String id);
   Future<List<TaskModel>> filterTask(TaskStatus status);
 }
 
@@ -28,10 +28,11 @@ class TaskLocalDataSourceImpl implements TaskLocalDataSource {
   }
 
   @override
-  Future<List<TaskModel>> deleteTask(int index) async {
+  Future<List<TaskModel>> deleteTask(String id) async {
     try {
       var box = await _getBox();
-      await box.deleteAt(index);
+
+      await box.deleteAt(box.values.toList().indexWhere((e) => e.id == id));
       var listTask = box.values.toList();
       return listTask;
     } catch (e) {
@@ -40,10 +41,11 @@ class TaskLocalDataSourceImpl implements TaskLocalDataSource {
   }
 
   @override
-  Future<List<TaskModel>> editTask(int index, TaskModel task) async {
+  Future<List<TaskModel>> editTask(TaskModel task) async {
     try {
       var box = await _getBox();
-      await box.putAt(index, task);
+      await box.putAt(
+          box.values.toList().indexWhere((e) => e.id == task.id), task);
       var listTask = box.values.toList();
       return listTask;
     } catch (e) {

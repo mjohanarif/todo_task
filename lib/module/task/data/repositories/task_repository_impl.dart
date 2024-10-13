@@ -18,9 +18,9 @@ class TaskRepositoryImpl implements TaskRepository {
   }
 
   @override
-  Future<Either<Failure, List<TaskModel>>> deleteTask(int index) async {
+  Future<Either<Failure, List<TaskModel>>> deleteTask(String id) async {
     try {
-      final result = await localDataSource.deleteTask(index);
+      final result = await localDataSource.deleteTask(id);
       return Right(result);
     } on CacheException catch (exception) {
       return Left(CacheFailure(exception.message));
@@ -28,10 +28,9 @@ class TaskRepositoryImpl implements TaskRepository {
   }
 
   @override
-  Future<Either<Failure, List<TaskModel>>> editTask(
-      int index, TaskModel task) async {
+  Future<Either<Failure, List<TaskModel>>> editTask(TaskModel task) async {
     try {
-      final result = await localDataSource.editTask(index, task);
+      final result = await localDataSource.editTask(task);
       return Right(result);
     } on CacheException catch (exception) {
       return Left(CacheFailure(exception.message));

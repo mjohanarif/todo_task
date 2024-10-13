@@ -7,12 +7,10 @@ import 'package:todo_task/shared/shared.dart';
 
 class TaskCard extends StatelessWidget {
   final TaskModel task;
-  final int index;
 
   const TaskCard({
     super.key,
     required this.task,
-    required this.index,
   });
 
   @override
@@ -22,7 +20,7 @@ class TaskCard extends StatelessWidget {
         Navigator.pushNamed(
           context,
           AppRoutes.taskDetailPage,
-          arguments: (index, task),
+          arguments: task,
         );
       },
       child: Container(
@@ -58,7 +56,7 @@ class TaskCard extends StatelessWidget {
                   GestureDetector(
                     onTap: () {
                       context.read<TaskBloc>().add(
-                            TaskEvent.deleteTask(index),
+                            TaskEvent.deleteTask(task.id),
                           );
                     },
                     child: const Icon(

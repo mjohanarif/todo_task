@@ -14,11 +14,19 @@ class TaskModel extends HiveObject {
   TaskStatus status;
   @HiveField(3)
   DateTime createdAt;
+  @HiveField(4)
+  String id;
 
   TaskModel({
     required this.title,
     required this.description,
     required this.status,
     required this.createdAt,
+    required this.id,
   });
+
+  @override
+  String toString() {
+    return 'title : $title';
+  }
 }

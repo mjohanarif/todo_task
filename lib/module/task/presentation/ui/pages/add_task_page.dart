@@ -74,6 +74,10 @@ class _AddTaskPageState extends State<AddTaskPage> {
                             description: descriptionController.text,
                             status: TaskStatus.belumSelesai,
                             createdAt: DateTime.now(),
+                            id: DateTime.now()
+                                    .millisecondsSinceEpoch
+                                    .toString() +
+                                titleController.text,
                           ),
                         ),
                       );
